@@ -23,3 +23,23 @@
   - Agence Zenika à personne
 - Vu par agence
   - Gestion de prêt inter-agence
+
+## Comment utiliser ?
+
+Installer Rust
+
+Installer trunk
+
+```
+cargo install trunk
+```
+
+Ajouter la target wasm
+```
+rustup target add wasm32-unknown-unknown
+```
+
+Lancer le projet
+```
+trunk serve --open
+```
