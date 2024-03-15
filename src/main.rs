@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 use leptos::*;
 
 fn main() {
@@ -7,6 +9,15 @@ fn main() {
 enum Language {
     EN,
     FR,
+}
+
+impl Display for Language {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Language::EN => f.write_str("🇬🇧"),
+            Language::FR => f.write_str("🇫🇷"),
+        }
+    }
 }
 
 struct Book {
@@ -59,7 +70,7 @@ fn BookList() -> impl IntoView {
 #[component]
 fn BookCard(book: Book) -> impl IntoView {
     view! {
-        <span>{book.title}</span>
+        <span>{book.language.to_string()} - {book.title}</span>
         <ul class="p-6 list-disc list-inside">
             {book.authors.into_iter()
                 .map(|author| view! { <li class="my-2">{author}</li>})
